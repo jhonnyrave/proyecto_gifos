@@ -28,6 +28,7 @@ h1 {
     margin: 75px auto auto auto;
     margin-top: 7.5rem;
     font-family: 'Montserrat', sans-serif;
+    padding-bottom: 95px;
 }
 
 #textos .color_gifos {
@@ -106,6 +107,28 @@ h1 {
     font-size: 16px;
     color: #9CAFC3;
     text-align: left;
+}
+
+h2{
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #572EE5;
+    text-align: center;
+    line-height: 25px;
+}
+
+h3{
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #572EE5;
+    text-align: center;
+    line-height: 25px;
+}
+
+.info{
+    margin-top: 73px;
 }
 
 
