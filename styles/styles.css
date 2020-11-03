@@ -119,16 +119,44 @@ h1 {
     outline-style: none;
     text-align: left;
 }
-#box-search {
+.txt-buscar #box-search {
 position: fixed;
 background: #FFFFFF;
 height: 22px;
-width: 210px;
 display: flex;
 align-content: center;
 align-items: center;
+overflow: hidden;
 
 }
+
+.txt-buscar #box-search li a{
+   
+    display: block;
+    font-family: Roboto-Regular;
+     font-size: 16px;
+   color: #000000;
+text-align: left;
+    
+    }
+
+    .txt-buscar #box-search li a:hover{
+   
+      background: #F3F3F3;
+    
+        
+        }
+
+        #box-search li a i{
+   
+           margin-right: 10px;
+           color: #777777;
+          
+              
+              }
+    
+
+
 
 h2{
     font-family: Montserrat, sans-serif;
