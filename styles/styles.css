@@ -61,6 +61,16 @@ h1 {
     font-size: 13px;
 }
 
+.nav-container  .link {
+   padding-top: 36px;
+   padding-bottom: 38px;
+}
+
+.nav-container .link-grabar{
+    padding-top: 18px;
+    padding-bottom: 38px;
+}
+
 .show-menu-btn,
 .hide-menu-btn {
     display: none;
@@ -105,8 +115,19 @@ h1 {
     width: 210px;
     font-family: Roboto-Regular;
     font-size: 16px;
-    color: #9CAFC3;
+    color:#000000;
+    outline-style: none;
     text-align: left;
+}
+#box-search {
+position: fixed;
+background: #FFFFFF;
+height: 22px;
+width: 210px;
+display: flex;
+align-content: center;
+align-items: center;
+
 }
 
 h2{
@@ -129,6 +150,10 @@ h3{
 
 .info{
     margin-top: 73px;
+}
+
+.gifos{
+    background: #F3F5F8;
 }
 
 
