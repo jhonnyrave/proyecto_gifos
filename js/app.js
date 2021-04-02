@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let apiKey = "rIEVvs2KtgBiLhRpXdBjTQ05itZuxWd8";
     let giphyAPI = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}`;
     getData(giphyAPI);
+    carrusel();
   }
 
   function getData(urlAPI) {
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             img.src = url;
             img.className = "gif-trending";
             div.appendChild(img);
-            let el = document.querySelector(".slick-track");
+            let el = document.querySelector(".carousel");
             el.appendChild(div);
           });
       })
@@ -28,40 +29,24 @@ document.addEventListener("DOMContentLoaded", function () {
   dataTrending();
 });
 
-function App() {}
+function carrusel() {
+  const fila = document.querySelector(".contenedor-carousel");
+  const gifos = document.querySelectorAll(".slick");
 
-window.onload = function (event) {
-  var app = new App();
-  window.app = app;
-};
+  const flechaIzquierda = document.getElementById("flecha-izquierda");
+  const flechaDerecha = document.getElementById("flecha-derecha");
 
-App.prototype.processingButton = function (event) {
-  const btn = event.currentTarget;
-  const slickList = event.currentTarget.parentNode;
-  const track = event.currentTarget.parentNode.querySelector("#track");
-  const slick = track.querySelectorAll(".slick");
-  const slickWidth = slick[0].offsetWidth;
-  const trackWidth = track.offsetWidth;
-  const listWidth = slickList.offsetWidth;
-
-  track.style.left == ""
-    ? (leftPosition = track.style.left = 0)
-    : (leftPosition = parseFloat(track.style.left.slice(0, -2) * -1));
-
-  btn.dataset.button == "button-prev"
-    ? prevAction(leftPosition, slickWidth, track)
-    : nextAction(leftPosition, trackWidth, listWidth, slickWidth, track);
-};
-
-let prevAction = (leftPosition, slickWidth, track) => {
-  if (leftPosition > 0) {
-    console.log("entro 2");
-    track.style.left = `${-1 * (leftPosition - slickWidth)}px`;
+  // ? ----- ----- Event Listener para la flecha derecha. ----- -----
+  if (flechaDerecha) {
+    flechaDerecha.addEventListener("click", () => {
+      fila.scrollLeft += fila.offsetWidth;
+    });
   }
-};
 
-let nextAction = (leftPosition, trackWidth, listWidth, slickWidth, track) => {
-  if (leftPosition < trackWidth - listWidth) {
-    track.style.left = `${-1 * (leftPosition + slickWidth)}px`;
+  // ? ----- ----- Event Listener para la flecha izquierda. ----- -----
+  if (flechaIzquierda) {
+    flechaIzquierda.addEventListener("click", () => {
+      fila.scrollLeft -= fila.offsetWidth;
+    });
   }
-};
+}
