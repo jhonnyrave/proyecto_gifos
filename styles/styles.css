@@ -15,6 +15,14 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+body.dark {
+  background-color: #222326;
+}
+
+footer .dark {
+  background-color: #222326;
+}
+
 header {
   width: 100%;
 }
@@ -172,6 +180,47 @@ main {
 .gif-trending {
   width: 303.6px;
   height: 275px;
+}
+
+.gif-trending:hover {
+  opacity: 0.6;
+  background: #572ee5;
+}
+
+.slick:before {
+  content: "";
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.slick:hover:before {
+  opacity: 1;
+}
+
+.slick .text-container {
+  width: inherit;
+  padding: 5px 15px;
+  color: #444;
+  position: absolute;
+  top: 100%;
+}
+
+.slick:hover .text-container {
+  top: 0;
+}
+
+p {
+  color: #888;
+  font-size: 0.75em;
+  line-height: 0.2em;
+}
+
+i {
+  font-style: normal;
 }
 
 .flecha-izquierda,
