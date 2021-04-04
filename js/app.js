@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let giphyAPI = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}`;
     getData(giphyAPI);
     carrusel();
-    nocturna();
+    // modal();
   }
 
   function getData(urlAPI) {
@@ -15,27 +15,38 @@ document.addEventListener("DOMContentLoaded", function () {
         json.data
           .map((gif) => gif)
           .forEach((gif) => {
-            console.log(gif.title);
             let div = document.createElement("div");
             div.className = "slick";
             let img = document.createElement("img");
             img.src = gif.images.fixed_width.url;
             img.className = "gif-trending";
+            img.id = "myImg";
+            img.onmouseover = "modal(this)";
             div.appendChild(img);
+
             let divcontainer = document.createElement("div");
             divcontainer.className = "text-container";
             div.appendChild(divcontainer);
-            let h4 = document.createElement("h4");
-            h4.appendChild(document.createTextNode(gif.title));
-            divcontainer.appendChild(h4);
+
+            let user = document.createElement("p");
+            user.appendChild(document.createTextNode(gif.user.username));
+            user.className = "user-gif";
+            divcontainer.appendChild(user);
+
+            let title = document.createElement("h4");
+            title.appendChild(document.createTextNode(gif.title));
+            title.className = "title-gif";
+            divcontainer.appendChild(title);
+
             let parrafo = document.createElement("p");
             parrafo.title = "TEXTO PRUEBA";
             divcontainer.appendChild(parrafo);
+
             let el = document.querySelector(".carousel");
             el.appendChild(div);
           });
       })
-      .catch((error) => console.log(err));
+      .catch((error) => console.log(error));
   }
 
   dataTrending();
@@ -96,4 +107,26 @@ function getStreamAndRecord() {
       video.srcObject = stream;
       video.play();
     });
+}
+
+function modal() {
+  var modal = document.getElementById("myModal");
+
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("myImg");
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  img.onclick = function () {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+  };
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
 }
