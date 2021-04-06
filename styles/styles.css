@@ -500,6 +500,28 @@ footer {
   background-image: url(../assets/icon_facebook.svg);
 }
 
+.img-carrusel {
+  opacity: 0.7;
+  background: #ffffff;
+  border-radius: 6px;
+  border-radius: 6px;
+}
+
+.corazon {
+  background-image: url(../assets/icon-favoritos.svg);
+}
+
+.search_gif {
+  width: 100%;
+  border: none;
+  padding-left: 3%;
+  background-color: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #9cafc3;
+  outline: none;
+}
+
 .facebook:hover {
   background-image: url(../assets/icon_facebook_hover.svg);
 }

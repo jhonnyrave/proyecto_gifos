@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   function dataTrending() {
-    let apiKey = "rIEVvs2KtgBiLhRpXdBjTQ05itZuxWd8";
-    let giphyAPI = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}`;
-    getData(giphyAPI);
+    //let apiKey = "rIEVvs2KtgBiLhRpXdBjTQ05itZuxWd8";
+    let giphy = `${giphyAPI}?api_key=${apiKey}`;
+    getData(giphy);
     carrusel();
     // modal();
   }
@@ -27,6 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let divcontainer = document.createElement("div");
             divcontainer.className = "text-container";
             div.appendChild(divcontainer);
+
+            let divCorazon = document.createElement("div");
+            divCorazon.className = "img-carrusel corazon";
+            divCorazon.id = "img-corazon";
+            divcontainer.appendChild(divCorazon);
 
             let user = document.createElement("p");
             user.appendChild(document.createTextNode(gif.user.username));
