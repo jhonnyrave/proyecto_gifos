@@ -223,55 +223,39 @@ i {
   font-style: normal;
 }
 
-.flecha-izquierda,
-.flecha-derecha {
-  border: none;
-  background-color: transparent;
-  font-size: 40px;
-  height: 50%;
-  top: calc(50% - 25%);
-  line-height: 40px;
-  width: 50px;
-  color: #fff;
-  cursor: pointer;
-  z-index: 500;
-  transition: 0.2s ease all;
-}
-
-.flecha-izquierda,
-.flecha-izquierda:hover,
-.flecha-derecha,
-.flecha-derecha:hover {
-  width: 40px;
-  height: 40px;
-}
-
-.flecha-izquierda {
-  background-image: url("assets/button-slider-left.svg");
-}
-
-.flecha-izquierda:hover {
-  background-image: url("assets/button-slider-left-hover.svg");
-}
-
-.flecha-derecha {
-  background-image: url("assets/button-Slider-right.svg");
-}
-
-.flecha-derecha:hover {
-  background-image: url("assets/button-Slider-right-hover.svg");
-}
-
 /* ---- ----- ----- Carousel ----- ----- ----- */
 .gifos .contenedor-carousel {
   width: 100%;
-  overflow: hidden;
-  scroll-behavior: smooth;
+  display: -webkit-box;
+  display: -ms-flexbox;
 }
 
 .gifos .contenedor-carousel .carousel {
+  width: 100%;
   display: flex;
-  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.btn-gitActions {
+  width: 8rem;
+  padding: 4%;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  right: 0;
+}
+.gif__container .btn-gitActions .btn {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.gif__container .favorite {
+  background: url("/assets/icon-fav.svg") center no-repeat;
 }
 
 #myImg {

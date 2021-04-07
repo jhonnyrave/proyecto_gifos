@@ -6,20 +6,7 @@
     <title>Gifos</title>
     <link rel="stylesheet" href="styles/styles.css" />
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script
-      src="js/app.js"
-      language="javascript"
-      type="text/javascript"
-    ></script>
-    <script
-      src="js/conexion.js"
-      language="javascript"
-      type="text/javascript"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/03e7517ade.js"
-      crossorigin="anonymous"
-    ></script>
+
     <link rel="icon" type="image/svg" href="assets/logo-desktop.svg" />
   </head>
   <body>
@@ -92,21 +79,24 @@
           </p>
         </header>
         <div class="contenedor-principal">
-          <button
-            role="button"
-            id="flecha-izquierda"
-            class="flecha-izquierda"
-          ></button>
+          <div class="flecha-izquierda">
+            <img
+              src="assets/button-slider-left.svg"
+              alt="Flecha Previous"
+              id="flecha-izquierda"
+            />
+          </div>
 
           <div class="contenedor-carousel">
             <div class="carousel" id="track"></div>
           </div>
-
-          <button
-            role="button"
-            id="flecha-derecha"
-            class="flecha-derecha"
-          ></button>
+          <div class="flecha-derecha">
+            <img
+              src="assets/Button-Slider-right.svg"
+              alt="Flecha Previous"
+              id="flecha-derecha"
+            />
+          </div>
         </div>
       </section>
     </main>
@@ -129,5 +119,19 @@
       <!-- Modal Caption (Image Text) -->
       <div id="caption"></div>
     </div>
+    <script
+      src="js/conexion.js"
+      language="javascript"
+      type="text/javascript"
+    ></script>
+    <script
+      src="js/trendingGifos.js"
+      language="javascript"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/03e7517ade.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

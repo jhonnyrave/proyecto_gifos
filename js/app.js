@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   function dataTrending() {
-    //let apiKey = "rIEVvs2KtgBiLhRpXdBjTQ05itZuxWd8";
     let giphy = `${giphyAPI}?api_key=${apiKey}`;
     getData(giphy);
     carrusel();
-    // modal();
   }
 
   function getData(urlAPI) {
@@ -15,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         json.data
           .map((gif) => gif)
           .forEach((gif) => {
+            -----
             let div = document.createElement("div");
             div.className = "slick";
             let img = document.createElement("img");
@@ -59,8 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function carrusel() {
   const fila = document.querySelector(".contenedor-carousel");
-  const gifos = document.querySelectorAll(".slick");
-
   const flechaIzquierda = document.getElementById("flecha-izquierda");
   const flechaDerecha = document.getElementById("flecha-derecha");
 
@@ -69,6 +66,12 @@ function carrusel() {
     flechaDerecha.addEventListener("click", () => {
       fila.scrollLeft += fila.offsetWidth;
     });
+
+    flechaDerecha.addEventListener("mouseover", () => {
+      flechaDerecha.src = "assets/Button-Slider-right-hover.svg";
+      flechaDerecha.appendChild(flechaDerecha);
+    });
+    //flechaDerecha.addEventListener("mouseout", setBtnCarrusel);
   }
 
   // ? ----- ----- Event Listener para la flecha izquierda. ----- -----
@@ -76,6 +79,10 @@ function carrusel() {
     flechaIzquierda.addEventListener("click", () => {
       fila.scrollLeft -= fila.offsetWidth;
     });
+    flechaIzquierda.addEventListener("mouseover", () => {
+      flechaIzquierda.src = "assets/button-slider-left-hover.svg";
+    });
+    //flechaIzquierda.addEventListener("mouseout", setBtnCarrusel);
   }
 }
 
@@ -135,3 +142,13 @@ function modal() {
     modal.style.display = "none";
   };
 }
+
+const setBtnCarrusel = () => {
+  if (localStorage.getItem("dark-mode") === "true") {
+    flechaDerecha.src = "assets/button-slider-left-md-noct.svg";
+    flechaIzquierda.src = "assets/button-slider-right-md-noct.svg";
+  } else {
+    flechaDerecha.src = "assets/button-slider-left.svg";
+    flechaIzquierda.src = "assets/Button-Slider-right.svg";
+  }
+};
