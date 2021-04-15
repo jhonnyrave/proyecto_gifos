@@ -1,6 +1,6 @@
-const $carousel = document.querySelector(".carousel");
-const $flecha_izquierda = document.querySelector("#flecha-izquierda");
-const $flecha_derecha = document.querySelector("#flecha-derecha");
+const $carousel = document.querySelector("#trending__slider");
+const $flecha_izquierda = document.querySelector("#previous-btn");
+const $flecha_derecha = document.querySelector("#next-btn");
 
 $flecha_izquierda.addEventListener("mouseout", () => {
   $flecha_izquierda.src = "assets/button-slider-left.svg";
@@ -33,11 +33,11 @@ apiTrendingGifs();
 const carouselTrendingGifs = (trendingGif) => {
   for (let i = 0; i < trendingGif.data.length; i++) {
     const div = document.createElement("div");
-    div.classList.add("slick");
+    div.classList.add("gif__container");
     div.innerHTML = ` 
-    <img class="gif-trending" onclick="maximizeGif('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].username}','${trendingGif.data[i].title}')" src="${trendingGif.data[i].images.original.url}" alt="${trendingGif.data[i].title}">
+    <img class="gif" onclick="maximizeGif('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].username}','${trendingGif.data[i].title}')" src="${trendingGif.data[i].images.original.url}" alt="${trendingGif.data[i].title}">
 
-    <div class="text-container">
+    <div class="gifActions">
         <div class="btn-gitActions">
             <div class="btn favorite" onclick="addToFav('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].username}','${trendingGif.data[i].title}')"></div>
             <div class="btn download" onclick="downloadGif('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].title}')"></div>
