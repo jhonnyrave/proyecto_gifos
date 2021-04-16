@@ -1032,7 +1032,7 @@ body.darkMode .crearGif .pagination .step {
   .gif__container .gifActions:hover {
     opacity: 100;
   }
-  .gif__container .gifActions__btn {
+  .gif__container .btn-gitActions {
     width: 8rem;
     padding: 4%;
     position: absolute;
@@ -1044,9 +1044,9 @@ body.darkMode .crearGif .pagination .step {
     justify-content: space-between;
     right: 0;
   }
-  .gif__container .gifActions__btn .btn {
-    width: 2rem;
-    height: 2rem;
+  .gif__container .btn-gitActions .btn {
+    width: 32px;
+    height: 32px;
     cursor: pointer;
   }
   .gif__container .favorite {
@@ -1177,7 +1177,8 @@ body.darkMode .gif__info {
 
 .gifMax {
   display: block;
-  max-width: 90%;
+  width: 695px;
+  height: 385px;
   margin: 0 auto;
 }
 
@@ -1193,9 +1194,7 @@ body.darkMode .gif__info {
   justify-content: space-between;
 }
 
-.gifMaxActions__btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.btn-gifMaxActions {
   display: flex;
 }
 

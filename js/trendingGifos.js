@@ -1,6 +1,10 @@
 const $carousel = document.querySelector("#trending__slider");
 const $flecha_izquierda = document.querySelector("#previous-btn");
 const $flecha_derecha = document.querySelector("#next-btn");
+const $gitMaximized = document.querySelector("#maximizedGif");
+const $maxCloseBtn = document.querySelector("#close-max-btn");
+const $flecha_izquierda_modal = document.querySelector("#previous-btn-modal");
+const $flecha_derecha_modal = document.querySelector("#next-btn-modal");
 
 $flecha_izquierda.addEventListener("mouseout", () => {
   $flecha_izquierda.src = "assets/button-slider-left.svg";
@@ -63,3 +67,41 @@ const prevSliderBtn = () => {
 
 $flecha_izquierda.addEventListener("click", nextSliderBtn);
 $flecha_derecha.addEventListener("click", prevSliderBtn);
+
+//maximizar gifo
+const maximizeGif = (gif, username, title) => {
+  $gitMaximized.classList.remove("hidden");
+  $gitMaximized.classList.add("maximizedGif");
+  $gitMaximized.innerHTML = "";
+  const maximizedGifContainer = document.createElement("div");
+  maximizedGifContainer.classList.add("maximizedGif__container");
+  maximizedGifContainer.innerHTML = `
+  <div class="close-btn" id="close-max-btn" onclick="closeMaximized()"></div>
+	<div class="maxGif_Container">
+  <div class="previous-btn-modal arrows">
+  <img src="assets/button-slider-left.svg" 
+  alt="Flecha Previous" id="previous-btn-modal">
+</div>
+		<img class="gifMax" src="${gif}" alt="${title}">
+    <div class="next-btn-modal arrows">
+				<img src="assets/Button-Slider-right.svg" alt="Flecha Next" id="next-btn-modal">
+			</div>
+	</div>
+	<div class="gifMaxActions">
+		<div class="gif__info">
+			<p class="gif_user">${username}</p>
+			<p class="gif_title">${title}</p>
+		</div>
+		<div class="btn-gifMaxActions">
+			<div class="buttonsMax favoriteMax" onclick="addToFav('${gif}', '${username}', '${title}')"></div>
+			<div class="buttonsMax downloadMax" onclick="downloadGif('${gif}','${title}')"></div>
+			</div>
+	</div>`;
+  $gitMaximized.appendChild(maximizedGifContainer);
+};
+
+//cerrar modal
+const closeMaximized = () => {
+  $gitMaximized.classList.add("hidden");
+  $gitMaximized.classList.remove("maximizedGif");
+};
