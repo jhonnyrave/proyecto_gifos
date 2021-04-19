@@ -1004,6 +1004,10 @@ body.darkMode .crearGif .pagination .step {
   display: none;
 }
 
+.gif__container_modal {
+  flex-direction: column;
+}
+
 @media screen and (min-width: 400px) {
   .gif__container .gif {
     margin: 1rem;
@@ -1166,10 +1170,24 @@ body.darkMode .maximizedGif {
   background: url("/assets/close.svg") center no-repeat;
 }
 
+.gif_user-modal {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 15px;
+  color: #000000;
+}
+.gif_title-modal {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000000;
+}
+
 .gifMaxActions {
   margin: 0 auto;
-  padding-top: 0.5rem;
+  padding: 0.5rem 0.8rem 0 1.2rem;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
 }
 
@@ -1219,7 +1237,7 @@ body.darkMode .gif__info {
 .gifMaxActions {
   width: 90%;
   margin: 0 auto;
-  padding-top: 0.5rem;
+  padding-top: 1.2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1242,8 +1260,8 @@ body.darkMode .gif__info {
 
 @media screen and (min-width: 768px) {
   .buttonsMax {
-    width: 2rem;
-    height: 2rem;
+    width: 36px;
+    height: 36px;
   }
 }
 

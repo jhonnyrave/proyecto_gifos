@@ -103,9 +103,30 @@
 	<!-- Gif Maximizado -->
 
 	<div class="hidden" id="maximizedGif">
+		
+		<div class="maximizedGif__container" id = "maximizedGif__container">
+			<div class="close-btn" id="close-max-btn" onclick="closeMaximized()"></div>
+		<div class="content__maximizedGif">
+			
+			<!-- flecha prev -->
+		<div class="previous-btn-modal arrows">
+			<img src="assets/button-slider-left.svg" alt="Flecha Previous" id="previous-btn-modal">
+		</div>
+		
+		<!-- trending gif slider -->
+		<div class="maxGif_Container">
 
+			<div class="trending__slider-modal" id="trending__slider-modal">
+				<!-- acá van a aparecer los trending maximizados -->
+			</div>
+		</div>
+		<!-- flecha next -->
+		<div class="next-btn-modal arrows">
+			<img src="assets/Button-Slider-right.svg" alt="Flecha Next" id="next-btn-modal">
+		</div>
+		</div>
 	</div>
-
+	</div>
 	<!-- Favoritos -->
 	<section class="topContainers hidden" id="favorites-section">
 
@@ -231,10 +252,6 @@
 		</div>
 	</div>
 
-
-
-
-
 	<!-- Trending -->
 	<section class="trending" id="trendingSection">
 		<h2 class="trending__title">Trending GIFOS</h2>
@@ -281,6 +298,7 @@
 	<script src="js/app.js"></script>
 	<script src="js/conexion.js"></script>
 	<script src="js/trendingGifos.js"></script>
+	<script src="js/favoritos.js"></script>
 
 
 </body>

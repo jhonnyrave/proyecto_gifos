@@ -45,11 +45,11 @@ const apiTrendingGifs = async () => {
   await fetch(`${giphyAPI}?api_key=${apiKey}`)
     .then((response) => response.json())
     .then((trendingGif) => {
-      localStorage.clear();
+      sessionStorage.clear();
       let gifos = [];
       gifos.push(trendingGif);
       console.log(trendingGif);
-      localStorage.setItem("GifosArray", JSON.stringify(gifos));
+      sessionStorage.setItem("GifosArray", JSON.stringify(gifos));
       carouselTrendingGifs(trendingGif);
     })
     .catch((err) => console.log(err));
@@ -124,7 +124,7 @@ $flecha_derecha_modal.addEventListener("click", prevSliderBtn_modal);
 $flecha_izquierda_modal.addEventListener("click", nextSliderBtn_modal);
 //maximizar gifo
 const maximizeGif = (gif) => {
-  let retrievedObject = JSON.parse(localStorage.getItem("GifosArray"));
+  let retrievedObject = JSON.parse(sessionStorage.getItem("GifosArray"));
   $gitMaximized.classList.remove("hidden");
   $gitMaximized.classList.add("maximizedGif");
   $carousel_modal.innerHTML = "";
@@ -136,22 +136,31 @@ const maximizeGif = (gif) => {
       div.innerHTML = ` 
   <img class="gifMax" src="${retrievedObject[0].data[inicio].images.original.url}" alt="${retrievedObject[0].data[i].images.original.title}">
   <div class="gifMaxActions">
-        <div class="gifMaxActions__btn">
-            <div class="buttonsMax favoriteMax " onclick="addToFav()"></div>
-            <div class="buttonsMax downloadMax" onclick="downloadGif()"></div>
-        </div>
-        <div class="gif-info-modal">
-            <p class="gif_user-modal">data</p>
-            <p class="gif_title-modal">titulo</p>
-        </div>
+    <div class="gifMaxActions__btn">
+        <div class="buttonsMax favoriteMax " onclick="gitFavoritos('${retrievedObject[0].data[inicio].images.original.url}', '${retrievedObject[0].data[inicio].title}', '${retrievedObject[0].data[inicio].username}')"></div>
+        <div class="buttonsMax downloadMax" onclick="downloadGif()"></div>
+    </div>
+    <div class="gif-info-modal">
+        <p class="gif_user-modal">${retrievedObject[0].data[inicio].username}</p>
+        <p class="gif_title-modal">${retrievedObject[0].data[inicio].title}</p>
+    </div>
     </div>
   `;
       $carousel_modal.appendChild(div);
       div.style.display = "flex";
     } else {
       div.innerHTML = ` 
-      <img class="gifMax" src="${retrievedObject[0].data[i].images.original.url}" alt="${retrievedObject[0].data[i].images.original.title}">
-      `;
+      <img class="gifMax" src="${retrievedObject[0].data[i].images.original.url}" alt="${retrievedObject[0].data[i].title}">
+      <div class="gifMaxActions">
+    <div class="gifMaxActions__btn">
+        <div class="buttonsMax favoriteMax " onclick="gitFavoritos('${retrievedObject[0].data[i].images.original.url}', '${retrievedObject[0].data[i].title}', '${retrievedObject[0].data[i].username}')"></div>
+        <div class="buttonsMax downloadMax" onclick="downloadGif()"></div>
+    </div>
+    <div class="gif-info-modal">
+        <p class="gif_user-modal">${retrievedObject[0].data[i].username}</p>
+        <p class="gif_title-modal">${retrievedObject[0].data[i].title}</p>
+    </div>
+    </div>`;
       $carousel_modal.appendChild(div);
       div.style.display = "none";
     }
