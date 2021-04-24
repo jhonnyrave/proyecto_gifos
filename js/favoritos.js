@@ -15,6 +15,8 @@ const gitFavoritos = (gif, title, username) => {
     title: title,
     gif: gif,
   };
+  //verificar si ya existe en favoritos
+  arrFavoriteGifs = JSON.parse(localStorage.getItem("FavoriteGifs"));
 
   array_favoritos.push(objGif);
   localStorage.setItem("FavoriteGifs", JSON.stringify(array_favoritos));
