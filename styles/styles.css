@@ -864,6 +864,10 @@ input::-webkit-input-placeholder {
   position: relative;
 }
 
+.gif__container__results {
+  position: relative;
+}
+
 .gif__container .gif {
   margin: 0.5rem;
   width: 8rem;
@@ -914,7 +918,6 @@ input::-webkit-input-placeholder {
   }
 
   .gif__container__results .gif {
-    margin: 1rem;
     width: 10rem;
     height: 8rem;
   }
@@ -1005,6 +1008,42 @@ input::-webkit-input-placeholder {
     color: #fff;
   }
 
+  .gif__container__results .gif {
+    width: 14rem;
+    height: 11rem;
+  }
+
+  .gif__container__results .gifActions {
+    display: block;
+    opacity: 0;
+    width: 14rem;
+    height: 11rem;
+    position: absolute;
+    top: 0;
+    background-color: rgba(87, 46, 229, 0.6);
+    -webkit-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+  }
+
+  .gif__container__results .gifActions:hover {
+    opacity: 100;
+  }
+
+  .gif__container__results .btn-gitActions {
+    width: 10rem;
+    padding: 4vh;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    right: 0;
+  }
+
+  .gif__container__results .btn-gitActions .btn {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+
   .gif__container__results .favorite {
     background: url("/assets/icon-fav.svg") center no-repeat;
   }
@@ -1032,13 +1071,18 @@ input::-webkit-input-placeholder {
   .gif__container__results .maximize:hover {
     background: url("/assets/icon-max-hover.svg") center no-repeat;
   }
+
   .gif__container__results .remove {
     background: url("/assets/icon-trash-normal.svg") center no-repeat;
   }
+
   .gif__container__results .remove:hover {
     background: url("/assets/icon-trash-hover.svg") center no-repeat;
   }
+
   .gif__container__results .gif__info {
+    width: 90%;
+    margin: 0 auto;
     position: absolute;
     left: 8%;
     bottom: 15%;

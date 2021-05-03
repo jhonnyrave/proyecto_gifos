@@ -118,6 +118,11 @@ const searchBarGifs = (result) => {
   }
 };
 
+const downloadGif = async (url, title) => {
+  let blob = await fetch(url).then((img) => img.blob());
+  //invokeSaveAsDialog(blob, title + ".gif");
+};
+
 function captureVal(i) {
   const $list_item = `item-list-${i}`;
   const $value_list = document.getElementById($list_item).innerText;
@@ -168,6 +173,10 @@ const resultGif = (result) => {
             <div class="btn favorite" onclick="addToFav('${result.data[i].images.original.url}','${result.data[i].username}','${result.data[i].title}')"></div>
             <div class="btn download" onclick="downloadGif('${result.data[i].images.original.url}','${result.data[i].title}')"></div>
             <div class="btn maximize" onclick="maximizeGif('${result.data[i].images.original.url}','${result.data[i].username}','${result.data[i].title}')"></div>
+        </div>
+        <div class="gif__info">
+            <p class="gif_user">${result.data[i].username}</p>
+            <p class="gif_title">${result.data[i].title}</p>
         </div>
     </div>
     `;
