@@ -124,6 +124,10 @@ $flecha_derecha_modal.addEventListener("mouseover", () => {
   $flecha_derecha_modal.src = "assets/Button-Slider-right-hover.svg";
 });
 
+$flecha_derecha_modal.addEventListener("mouseover", () => {
+  $flecha_derecha_modal.src = "assets/Button-Slider-right-hover.svg";
+});
+
 const apiTrendingGifs = async () => {
   await fetch(`${giphyAPI}?api_key=${apiKey}`)
     .then((response) => response.json())
