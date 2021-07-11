@@ -72,24 +72,9 @@
 				<!-- Acá van a aparecer los gifs buscados -->
 			</div>
 			<a href="" class="button hidden" id="verMas-btn">VER MÁS</a>
+			<ul class="pagination hidden" id="pagination"></ul>
 		</section>
 	</main>
-
-		<!-- Favoritos -->
-		<section class="topContainers hidden" id="favorites-section">
-			<img src="assets/icon-favoritos.svg" alt="Imagen decorativa">
-			<h2 class="title">Favoritos</h2>
-			<section class="empty__container hidden" id="noFavs_container">
-				<img class="empty__image" src="assets/icon-fav-sin-contenido.svg" alt="Imagen decorativa">
-				<h3 class="empty__text">¡Guarda tu primer GIFO en Favoritos <br>
-					para que se muestre aquí!</h3>
-			</section>
-			<div class="searchResult">
-				<div class="searchResult__gallery hidden" id="fav-container">
-					<!-- Acá van a aparecer los gifs favoriteados -->
-				</div>
-			</div>
-		</section>
 
 	<!-- Trending -->
 	<section class="trending" id="trendingSection">
@@ -142,6 +127,21 @@
 		</div>
 	</div>
 	
+	<!-- Favoritos -->
+	<section class="topContainers hidden" id="favorites-section">
+		<img src="assets/icon-favoritos.svg" alt="Imagen decorativa">
+		<h2 class="title">Favoritos</h2>
+		<section class="empty__container hidden" id="noFavs_container">
+			<img class="empty__image" src="assets/icon-fav-sin-contenido.svg" alt="Imagen decorativa">
+			<h3 class="empty__text">¡Guarda tu primer GIFO en Favoritos <br>
+				para que se muestre aquí!</h3>
+		</section>
+		<div class="searchResult">
+			<div class="searchResult__gallery hidden" id="fav-container" style="flex-direction: row; justify-content: space-evenly;">
+				<!-- Acá van a aparecer los gifs favoriteados -->
+			</div>
+		</div>
+	</section>
 
 	<!-- Mis gifs -->
 	<section class="topContainers hidden" id="misGifosSection">
@@ -241,6 +241,5 @@
 	<script src="js/searchGifos.js"></script>
 	<script src="js/favoritos.js"></script>
 	<script src="js/misGifos.js"></script>
-	<script src="js/create-gif.js"></script>
 </body>
 </html>
