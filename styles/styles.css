@@ -19,7 +19,7 @@
   --font-link-active: #9cafc3;
   --underline-hover: 2px solid #5ed7c6;
   --border-body: 5px solid #572ee5;
-  --border-sec: 2px solid #572ee5;
+  --border-sec: 1px solid #572ee5;
   --social-media-normal: #cdd6e0;
   --social-media-hover: #572ee5;
 }
@@ -231,16 +231,6 @@ li {
   font-weight: 700;
 }
 
-.hero__subtitle {
-  font-family: "Montserrat";
-  font-size: 18px;
-  color: #572ee5;
-  text-align: center;
-  line-height: 50px;
-  padding: 0 8% 5% 8%;
-  font-weight: 700;
-}
-
 @media screen and (min-width: 768px) {
   .hero__title {
     font-size: 2em;
@@ -430,6 +420,7 @@ input::-webkit-input-placeholder {
   margin: 0 auto;
   width: 100%;
   display: flex;
+  flex-direction: row;
   flex-flow: wrap;
   justify-content: space-evenly;
   align-items: center;
@@ -750,6 +741,23 @@ input::-webkit-input-placeholder {
   flex-direction: column;
 }
 
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-pg {
+  cursor: pointer;
+  margin-left: 30px;
+  font-size: 18px;
+  color: #9cafc3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .crearGif .pagination {
   margin: 0 auto;
   width: 75%;
@@ -864,28 +872,15 @@ input::-webkit-input-placeholder {
   position: relative;
 }
 
-.gif__container__results {
-  position: relative;
+.gifFavoritos {
+  height: 260px;
+  width: 200px;
 }
 
 .gif__container .gif {
   margin: 0.5rem;
   width: 8rem;
   height: 6rem;
-}
-
-.gif__container__results .gif {
-  margin: 0.5rem;
-  width: 8rem;
-  height: 6rem;
-}
-
-.gif__container__results {
-  position: relative;
-}
-
-.gif__container__results .gifActions {
-  display: none;
 }
 
 .gif__container .gifActions {
@@ -913,11 +908,6 @@ input::-webkit-input-placeholder {
 @media screen and (min-width: 400px) {
   .gif__container .gif {
     margin: 1rem;
-    width: 10rem;
-    height: 8rem;
-  }
-
-  .gif__container__results .gif {
     width: 10rem;
     height: 8rem;
   }
@@ -959,6 +949,8 @@ input::-webkit-input-placeholder {
     width: 32px;
     height: 32px;
     cursor: pointer;
+    background-color: #ddd7fa;
+    border-radius: 5px;
   }
 
   .gif__container .favorite {
@@ -1007,109 +999,16 @@ input::-webkit-input-placeholder {
     text-align: left;
     color: #fff;
   }
-
-  .gif__container__results .gif {
-    width: 14rem;
-    height: 11rem;
-  }
-
-  .gif__container__results .gifActions {
-    display: block;
-    opacity: 0;
-    width: 14rem;
-    height: 11rem;
-    position: absolute;
-    top: 0;
-    background-color: rgba(87, 46, 229, 0.6);
-    -webkit-transition: 0.2s ease-in-out;
-    transition: 0.2s ease-in-out;
-  }
-
-  .gif__container__results .gifActions:hover {
-    opacity: 100;
-  }
-
-  .gif__container__results .btn-gitActions {
-    width: 10rem;
-    padding: 4vh;
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    right: 0;
-  }
-
-  .gif__container__results .btn-gitActions .btn {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-  }
-
-  .gif__container__results .favorite {
-    background: url("/assets/icon-fav.svg") center no-repeat;
-  }
-
-  .gif__container__results .favorite:hover {
-    background: url("/assets/icon-fav-hover.svg") center no-repeat;
-  }
-
-  .gif__container__results .favorite:active {
-    background: url("/assets/icon-fav-active.svg") center no-repeat;
-  }
-
-  .gif__container__results .download {
-    background: url("/assets/icon-download.svg") center no-repeat;
-  }
-
-  .gif__container__results .download:hover {
-    background: url("/assets/icon-download-hover.svg") center no-repeat;
-  }
-
-  .gif__container__results .maximize {
-    background: url("/assets/icon-max-normal.svg") center no-repeat;
-  }
-
-  .gif__container__results .maximize:hover {
-    background: url("/assets/icon-max-hover.svg") center no-repeat;
-  }
-
-  .gif__container__results .remove {
-    background: url("/assets/icon-trash-normal.svg") center no-repeat;
-  }
-
-  .gif__container__results .remove:hover {
-    background: url("/assets/icon-trash-hover.svg") center no-repeat;
-  }
-
-  .gif__container__results .gif__info {
-    width: 90%;
-    margin: 0 auto;
-    position: absolute;
-    left: 8%;
-    bottom: 15%;
-    font-weight: 500;
-    text-align: left;
-    color: #fff;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .gif__container .gif {
-    width: 357px;
-    height: 275px;
-  }
-
-  .gif__container .gifActions {
-    width: 357px;
-    height: 275px;
-  }
-
-  .gif__container__results .gif {
-    width: 260px;
+    width: 250px;
     height: 200px;
   }
 
-  .gif__container__results .gifActions {
-    width: 260px;
+  .gif__container .gifActions {
+    width: 250px;
     height: 200px;
   }
 }
@@ -1121,15 +1020,6 @@ input::-webkit-input-placeholder {
   }
 
   .gif__container .gifActions {
-    width: 22rem;
-    height: 16rem;
-  }
-
-  .gif__container__results .gif {
-    width: 22rem;
-    height: 16rem;
-  }
-  .gif__container__results .gifActions {
     width: 22rem;
     height: 16rem;
   }
@@ -1288,6 +1178,10 @@ input::-webkit-input-placeholder {
 }
 
 .favoriteMax:active {
+  background: url("/assets/icon-fav-active.svg") center no-repeat;
+}
+
+.favoriteActive {
   background: url("/assets/icon-fav-active.svg") center no-repeat;
 }
 
