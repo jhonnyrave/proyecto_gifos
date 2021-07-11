@@ -124,10 +124,6 @@ $flecha_derecha_modal.addEventListener("mouseover", () => {
   $flecha_derecha_modal.src = "assets/Button-Slider-right-hover.svg";
 });
 
-$flecha_derecha_modal.addEventListener("mouseover", () => {
-  $flecha_derecha_modal.src = "assets/Button-Slider-right-hover.svg";
-});
-
 const apiTrendingGifs = async () => {
   await fetch(`${giphyAPI}?api_key=${apiKey}`)
     .then((response) => response.json())
@@ -150,10 +146,9 @@ const carouselTrendingGifs = (trendingGif) => {
     div.classList.add("gif__container");
     div.innerHTML = ` 
     <img class="gif" onclick="maximizeGif('${trendingGif.data[i].images.original.url}')" src="${trendingGif.data[i].images.original.url}" alt="${trendingGif.data[i].title}">
-
     <div class="gifActions">
         <div class="btn-gitActions">
-            <div class="btn favorite" onclick="addToFav('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].username}','${trendingGif.data[i].title}')"></div>
+            <div class="btn favorite" id ="${trendingGif.data[i].images.original.url}" onclick="gitFavoritos('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].username}','${trendingGif.data[i].title}')"></div>
             <div class="btn download" onclick="downloadGif('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].title}')"></div>
             <div class="btn maximize" onclick="maximizeGif('${trendingGif.data[i].images.original.url}','${trendingGif.data[i].username}','${trendingGif.data[i].title}')"></div>
         </div>
@@ -224,7 +219,7 @@ const maximizeGif = (gif) => {
   <img class="gifMax" src="${retrievedObject[0].data[inicio].images.original.url}" alt="${retrievedObject[0].data[i].images.original.title}">
   <div class="gifMaxActions">
     <div class="gifMaxActions__btn">
-        <div class="buttonsMax favoriteMax " onclick="gitFavoritos('${retrievedObject[0].data[inicio].images.original.url}', '${retrievedObject[0].data[inicio].title}', '${retrievedObject[0].data[inicio].username}')"></div>
+        <div class="buttonsMax favoriteMax" id ="${retrievedObject[0].data[i].images.original.url}" onclick="gitFavoritos('${retrievedObject[0].data[inicio].images.original.url}', '${retrievedObject[0].data[inicio].title}', '${retrievedObject[0].data[inicio].username}')"></div>
         <div class="buttonsMax downloadMax" onclick="downloadGif()"></div>
     </div>
     <div class="gif-info-modal">
@@ -240,7 +235,7 @@ const maximizeGif = (gif) => {
       <img class="gifMax" src="${retrievedObject[0].data[i].images.original.url}" alt="${retrievedObject[0].data[i].title}">
       <div class="gifMaxActions">
     <div class="gifMaxActions__btn">
-        <div class="buttonsMax favoriteMax " onclick="gitFavoritos('${retrievedObject[0].data[i].images.original.url}', '${retrievedObject[0].data[i].title}', '${retrievedObject[0].data[i].username}')"></div>
+        <div class="buttonsMax favoriteMax" id ="${retrievedObject[0].data[i].images.original.url}" onclick="gitFavoritos('${retrievedObject[0].data[i].images.original.url}', '${retrievedObject[0].data[i].title}', '${retrievedObject[0].data[i].username}')"></div>
         <div class="buttonsMax downloadMax" onclick="downloadGif()"></div>
     </div>
     <div class="gif-info-modal">

@@ -5,8 +5,8 @@ const $imgClose = document.getElementById("search-close-icon");
 const $searchIcon = document.querySelector(".search-icon");
 const $containerSearch = document.getElementById("searchResult");
 const $divSearchGif = document.getElementById("searchResult_gallery");
-const $divSearchGallery = document.getElementById("searchResult_gallery");
 const $titleSearchGif = document.getElementById("searchResult__title");
+const $items = 12;
 
 $input_search.addEventListener("keyup", () => {
   const $valueSearch = $input_search.value;
@@ -23,8 +23,8 @@ let requestOptions = {
   redirect: "follow",
 };
 
-const apiSearchGifs = async ($valueSearch) => {
-  await fetch(
+const apiSearchGifs = ($valueSearch) => {
+  fetch(
     `https://api.giphy.com/v1/gifs/search/tags?api_key=${apiKey}&q=${$valueSearch}&limit=4`,
     requestOptions
   )
@@ -83,19 +83,21 @@ const searchBarGifs = (result) => {
   cleanSearchBar();
   const $divResults = document.createElement("div");
   $divResults.setAttribute("id", "search__results");
-
   if (result.data.length == 0) {
+    $divSearchGif.innerHTML = "";
     $containerSearch.classList.remove("hidden");
     $titleSearchGif.innerHTML = "Lorem ipsum";
     const $imgNotFound = document.createElement("img");
     $imgNotFound.setAttribute("class", "not_found_icon");
     $imgNotFound.setAttribute("src", "assets/icon-busqueda-sin-resultado.svg");
+    $imgNotFound.style.marginBottom = "30px";
     $divSearchGif.appendChild($imgNotFound);
-
     const $paragNotFound = document.createElement("p");
     $paragNotFound.setAttribute("class", "not_found_text");
     $paragNotFound.innerHTML = "Intenta con otra búsqueda.";
     $divSearchGif.appendChild($paragNotFound);
+    $divSearchGif.style.flexDirection = "column";
+    $divSearchGif.style.justifyContent = "center";
   } else {
     const $ul = document.createElement("ul");
     $ul.setAttribute("id", "list__result");
@@ -104,7 +106,7 @@ const searchBarGifs = (result) => {
     $ul.style.marginTop = "10px";
     $divResults.appendChild($ul);
     for (let i = 0; i < result.data.length; i++) {
-      console.log(result.data[i].name);
+      // console.log(result.data[i].name);
       const $li = document.createElement("li");
       $li.setAttribute("class", "list__result__item");
       $li.setAttribute("id", `item-list-${[i]}`);
@@ -118,15 +120,10 @@ const searchBarGifs = (result) => {
   }
 };
 
-const downloadGif = async (url, title) => {
-  let blob = await fetch(url).then((img) => img.blob());
-  //invokeSaveAsDialog(blob, title + ".gif");
-};
-
 function captureVal(i) {
   const $list_item = `item-list-${i}`;
   const $value_list = document.getElementById($list_item).innerText;
-  console.log($value_list);
+  // console.log($value_list);
   $input_search.value = $value_list;
   $titleSearchGif.innerHTML = $value_list;
   apiSearchVal($value_list);
@@ -146,18 +143,45 @@ function captureValResult(i) {
   closeResults();
 }
 
-const apiSearchVal = async ($value_list) => {
-  await fetch(
-    `${searchGiphy}?api_key=${apiKey}&q=${$value_list}&limit=12&offset=24`,
+const apiSearchVal = ($value_list, $offset = 0) => {
+  let $totOffset = $offset * 12;
+  fetch(
+    `${searchGiphy}?api_key=${apiKey}&q=${$value_list}&limit=12&offset=${$totOffset}`,
     requestOptions
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       resultGif(result);
+      buildPagination($value_list, $items, $offset);
     })
     .catch((error) => console.log("error", error));
 };
+
+function buildPagination(value, itemsPerPage, currentOffset) {
+  const $numberOfItems = 60;
+  const $ulPag = document.querySelector("#pagination");
+  $ulPag.innerHTML = "";
+  $ulPag.classList.remove("hidden");
+  $ulPag.style.marginBottom = "20px";
+  $ulPag.style.marginTop = "39px";
+  let page = Math.ceil($numberOfItems / itemsPerPage);
+  console.log(itemsPerPage);
+  for (let pg = 1; pg <= page; pg++) {
+    $ulPag.innerHTML += `<li class="list-pg num-pg-${pg}">${pg}</li>`;
+    $list_val = document.querySelector(`.num-pg-${pg}`);
+    if (pg == currentOffset + 1) {
+      $list_val.style.backgroundColor = "#572EE5";
+      $list_val.style.color = "#FFFFFF";
+      $list_val.style.width = "32px";
+      $list_val.style.height = "32px";
+      $list_val.style.borderRadius = "50px";
+    }
+    if ($list_val) {
+      $list_val.setAttribute("onclick", `apiSearchVal('${value}', ${pg - 1})`);
+    }
+  }
+}
 
 const resultGif = (result) => {
   $resultGallery = document.getElementById("searchResult_gallery");
@@ -170,21 +194,19 @@ const resultGif = (result) => {
     <img class="gif-image" onclick="maximizeGif('${result.data[i].images.original.url}','${result.data[i].username}','${result.data[i].title}')" src="${result.data[i].images.original.url}" alt="${result.data[i].title}">
     <div class="gifActions">
         <div class="btn-gitActions">
-            <div class="btn favorite" onclick="addToFav('${result.data[i].images.original.url}','${result.data[i].username}','${result.data[i].title}')"></div>
+            <div class="btn favorite" id ="${result.data[i].images.original.url}" onclick="gitFavoritos('${result.data[i].images.original.url}','${result.data[i].username}','${result.data[i].title}')"></div>
+            <div class="btn favorite" onclick="gitFavoritos('${result.data[i].images.original.url}','${result.data[i].username}','${result.data[i].title}')"></div>
             <div class="btn download" onclick="downloadGif('${result.data[i].images.original.url}','${result.data[i].title}')"></div>
             <div class="btn maximize" onclick="maximizeGif('${result.data[i].images.original.url}','${result.data[i].username}','${result.data[i].title}')"></div>
         </div>
-        <div class="gif__info">
-            <p class="gif_user">${result.data[i].username}</p>
-            <p class="gif_title">${result.data[i].title}</p>
-        </div>
     </div>
     `;
-    $divSearchGallery.appendChild($divContentResult);
+    $divSearchGif.appendChild($divContentResult);
+    $divSearchGif.style.flexDirection = "row";
+    $divSearchGif.style.justifyContent = "space-evenly";
   }
 
   // const $divGifResults = document.createElement("div");
   // $divGifResults.setAttribute("id", "grid_results");
-
   // $divGifResults.appendChild($divSearchGif);
 };
